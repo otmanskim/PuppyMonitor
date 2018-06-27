@@ -39,7 +39,23 @@ final class AudioManager: NSObject {
         }
     }
 
-    func playRandomSound() { }
+    func playRandomSound() {
+        let recordings = DataManager().getRecordings()
+        guard recordings.count > 0 else { return }
+        
+        let selectedRecordingName = recordings[Int.random(in: 0..<recordings.count)]
+        let audioFilePath = FileManager.documentsDirectory().appendingPathComponent(selectedRecordingName)
+        
+        do {
+            try audioSession?.setCategory(AVAudioSessionCategoryPlayback)
+            try audioSession?.setActive(true)
+            try audioPlayer = AVAudioPlayer(contentsOf: audioFilePath)
+            
+        } catch(let error) {
+            print(error)
+        }
+        
+    }
 
     func isRecording() -> Bool { return false }
 }

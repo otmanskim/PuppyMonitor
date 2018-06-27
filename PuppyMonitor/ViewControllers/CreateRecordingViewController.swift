@@ -100,13 +100,9 @@ final class CreateRecordingViewController: UIViewController {
     fileprivate func stopRecording(success: Bool) {
         audioRecorder?.stop()
         audioRecorder = nil
+        isRecording = false
 
-        if success {
-            //save recording name to core data, navigate back to list
-//            guard let newRecordingName = recordingNameTextField.text else { return }
-//            saveRecording(name: newRecordingName)
-//            dismiss(animated: true, completion: nil)
-        } else {
+        if !success {
             showRecordingErrorAlert()
         }
     }

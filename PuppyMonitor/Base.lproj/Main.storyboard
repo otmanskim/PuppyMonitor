@@ -142,7 +142,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9vS-Hk-F7A">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="339" width="375" height="328"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recordingCell" id="B4s-g5-Jc4">
@@ -159,26 +159,55 @@
                                     <outlet property="delegate" destination="FtT-0R-PLf" id="jwO-2S-WhK"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3v-Ut-duI">
+                                <rect key="frame" x="172.5" y="301" width="30" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.132300266199604" blue="0.18045597078058129" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="recordButtonTapped" destination="FtT-0R-PLf" eventType="touchUpInside" id="jlM-3P-x6u"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Recording" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFC-sp-hnz">
+                                <rect key="frame" x="16" y="266" width="117" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kP5-DV-fLe">
+                                <rect key="frame" x="59" y="301" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="▶️"/>
+                                <connections>
+                                    <action selector="playbackButtonTapped" destination="FtT-0R-PLf" eventType="touchUpInside" id="Yym-IP-y7y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="HFC-sp-hnz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fVe-Py-CmP" secondAttribute="leading" symbolic="YES" id="1fi-TU-yXe"/>
                             <constraint firstItem="9vS-Hk-F7A" firstAttribute="leading" secondItem="fVe-Py-CmP" secondAttribute="leading" id="5PM-Dm-T8Q"/>
+                            <constraint firstItem="L3v-Ut-duI" firstAttribute="centerX" secondItem="fVe-Py-CmP" secondAttribute="centerX" id="DbU-gt-QXb"/>
                             <constraint firstItem="fVe-Py-CmP" firstAttribute="bottom" secondItem="9vS-Hk-F7A" secondAttribute="bottom" id="FE0-4m-BSF"/>
-                            <constraint firstItem="9vS-Hk-F7A" firstAttribute="top" secondItem="fVe-Py-CmP" secondAttribute="top" id="SDu-Tp-MXY"/>
+                            <constraint firstItem="9vS-Hk-F7A" firstAttribute="top" secondItem="fVe-Py-CmP" secondAttribute="top" constant="275" id="SDu-Tp-MXY"/>
+                            <constraint firstItem="fVe-Py-CmP" firstAttribute="trailing" secondItem="HFC-sp-hnz" secondAttribute="trailing" constant="242" id="Sm8-yi-8Jf"/>
+                            <constraint firstItem="9vS-Hk-F7A" firstAttribute="top" secondItem="L3v-Ut-duI" secondAttribute="bottom" constant="8" id="UHB-bK-bSn"/>
                             <constraint firstItem="fVe-Py-CmP" firstAttribute="trailing" secondItem="9vS-Hk-F7A" secondAttribute="trailing" id="gMQ-ls-fwS"/>
+                            <constraint firstItem="L3v-Ut-duI" firstAttribute="top" secondItem="HFC-sp-hnz" secondAttribute="bottom" constant="14" id="vMp-86-VeJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fVe-Py-CmP"/>
                     </view>
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="currentRecordingLabel" destination="HFC-sp-hnz" id="SJr-w5-5Js"/>
+                        <outlet property="playbackButton" destination="kP5-DV-fLe" id="Yn6-ux-STf"/>
+                        <outlet property="recordButton" destination="L3v-Ut-duI" id="CP9-tD-Wi7"/>
                         <outlet property="tableView" destination="9vS-Hk-F7A" id="GX1-p1-iZm"/>
                         <segue destination="Kvj-Ps-04K" kind="show" identifier="createNewSound" id="bi5-hW-2Sv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fGU-qC-5w3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="234" y="1110"/>
+            <point key="canvasLocation" x="232.80000000000001" y="1109.5952023988007"/>
         </scene>
         <!--Create Recording View Controller-->
         <scene sceneID="NKG-IM-hZ8">

@@ -55,4 +55,20 @@ final class DataManager {
             print(error)
         }
     }
+    
+    func getRecordings() -> [String] {
+        var recordings: [String] = []
+        let docsURL = FileManager.documentsDirectory()
+        
+        do {
+            let contents = try FileManager.default.contentsOfDirectory(at: docsURL, includingPropertiesForKeys: nil, options: [])
+            for url in contents {
+                recordings.append(url.lastPathComponent)
+            }
+        } catch {
+            print("error")
+        }
+        
+        return recordings
+    }
 }
